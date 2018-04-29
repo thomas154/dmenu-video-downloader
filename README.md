@@ -2,8 +2,7 @@
 This script ease the task of downloading videos using youtube-dl and dmenu.
 
 ## Demo
-
-[![demo1.gif](https://s6.postimg.cc/ks1z3bz9d/demo1.gif)](https://postimg.cc/image/4h1v70mrh/)
+[demo1.gif](https://s6.postimg.cc/qszo0ktn5/demo1.gif)
 
 ## Dependency
 + Greenclip (You can tweak the script accordingly if you use any other clipboard manager)
