@@ -1,0 +1,41 @@
+url=""
+quality=""
+arguments=""
+
+#Function for getting arguments for the downloader
+providearguments(){  
+	arguments=`echo -e 'no\n-k 1M -x 5' |dmenu -i -fn 'roboto mono nerd font:bold:size=11' -p "arguments"`
+	[[ $arguments = "" ]] && exit 0
+}
+
+#Function to select url from clipboard.
+#greenclip is here a clipboard manager.
+selecturl(){
+	url=`greenclip print | xargs -0 | ~/scripts/dmenu-downloader/extract |dmenu -i -l 10 -fn 'roboto mono nerd font:bold:size=11' -p "Select url"`
+	[[ $url = "" ]] && exit 0
+}
+
+#function to use youtube-dl to fetch quality of videos.
+selectquality(){
+	quality=`notify-send "Fetching" "video quality" | youtube-dl -F $url | \
+	sed -n '5,50p' | \
+	dmenu -i -l 10 -fn 'roboto mono nerd font:bold:size=11' -p "Select quality" | \
+	awk '{print $1;}'`
+	[[ $quality = "" ]] && exit 0
+}
+
+main(){
+	selecturl
+	selectquality
+	providearguments
+	quality=`echo $quality | sed 's/ /+/'`
+	if [[ $arguments = "no" ]]
+		then
+			youtube-dl -f $quality --external-downloader aria2c  $url
+	else
+		echo "$arguments"
+		youtube-dl -f $quality --external-downloader aria2c --external-downloader-args "$arguments" $url
+	fi
+}
+
+main
