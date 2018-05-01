@@ -13,7 +13,8 @@ This script ease the task of downloading videos using youtube-dl and dmenu.
 
 ## Installation
 ```
-git clone
+git clone https://github.com/thomas154/dmenu-video-downloader.git
+cd dmenu-video-downloader
 chmod +x vid-download extract
 ```
 ## Usage
