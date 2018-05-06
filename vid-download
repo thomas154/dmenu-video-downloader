@@ -1,6 +1,7 @@
 url=""
 quality=""
 arguments=""
+helperPath=`dirname "$0"`
 
 #Function for getting arguments for the downloader
 providearguments(){  
@@ -11,7 +12,7 @@ providearguments(){
 #Function to select url from clipboard.
 #greenclip is here a clipboard manager.
 selecturl(){
-	url=`greenclip print | xargs -0 | ~/scripts/dmenu-downloader/extract |dmenu -i -l 10 -fn 'roboto mono nerd font:bold:size=11' -p "Select url"`
+	url=`greenclip print | xargs -0 | $helperPath/extract |dmenu -i -l 10 -fn 'roboto mono nerd font:bold:size=11' -p "Select url"`
 	[[ $url = "" ]] && exit 0
 }
 
@@ -31,7 +32,7 @@ main(){
 	quality=`echo $quality | sed 's/ /+/'`
 	if [[ $arguments = "no" ]]
 		then
-			youtube-dl -f $quality --external-downloader aria2c  $url
+			youtube-dl -f $quality --external-downloader aria2c $url
 	else
 		echo "$arguments"
 		youtube-dl -f $quality --external-downloader aria2c --external-downloader-args "$arguments" $url
