@@ -2,8 +2,7 @@
 This script ease the task of downloading videos using youtube-dl and dmenu.
 
 ## Demo
-
-[![demo2.gif](https://s6.postimg.cc/wsnf3yjht/demo2.gif)](https://postimg.cc/image/ffd4p3o6l/)
+![demo1.gif](https://raw.githubusercontent.com/thomas154/gifs-for-repositories/master/dmenu-downloader-gif/gif/demo1.gif)
 
 ## Dependency
 + Greenclip (You can tweak the script accordingly if you use any other clipboard manager)
@@ -30,3 +29,6 @@ ctrl + Enter #for multiple selection.
 ```
 + Youtube-dl will automatically merge video and audio after downloading get finished.
 + Use case is that you can reduce the download size by selecting different quality audio and video.
+
+
+![demo2.gif](https://raw.githubusercontent.com/thomas154/gifs-for-repositories/master/dmenu-downloader-gif/gif/demo2.gif)
