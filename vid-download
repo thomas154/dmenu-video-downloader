@@ -19,7 +19,7 @@ selecturl(){
 #function to use youtube-dl to fetch quality of videos.
 selectquality(){
 	quality=`notify-send "Fetching" "video quality" | youtube-dl -F $url | \
-	sed -n '5,50p' | \
+	sed -n '7,50p' | \
 	dmenu -i -l 10 -fn 'roboto mono nerd font:bold:size=11' -p "Select quality" | \
 	awk '{print $1;}'`
 	[[ $quality = "" ]] && exit 0
